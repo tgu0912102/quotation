@@ -1,0 +1,101 @@
+@charset "utf-8";
+*{ box-sizing: border-box; }
+*{
+    padding:0;
+    margin:0;
+}
+
+.zentai {
+     background-color: #e3dfdc;
+     font-size: medium;
+     margin:0;
+}
+.header1{
+    position: relative;
+    padding: 15px 0 0;
+    background-color: #fff5e0;
+}
+.a4_form{ background-color: #e3dfdc;
+
+}
+
+.toptitle{
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    font-size: 24px;
+    text-align: center;
+}
+
+
+.nav{
+    width: 100%;
+    margin-top: 20px;
+    padding:10px 0 ;
+    background-color:#1a0b08;
+    color:#fff; 
+}
+
+
+a.none { text-decoration: none;}
+a:visited { color: aliceblue;}
+
+.nav ul{
+    list-style-type: none;
+    text-decoration: none;
+    padding: 5px 0;
+    display: flex;
+    justify-content:  center;
+}
+
+.none:last-of-type {
+    border-right: 1px solid #999;
+}
+.sevillana-regular {
+    
+}
+]
+
+.diet_form {
+    background: #e3dfdc;
+    padding: 0;
+    text-align: left;
+    margin-top: 0;
+}
+.form dl dt {
+    width: 400px;
+    height: 40px;
+    padding: 40px 0;
+    line-height: 0px;
+   
+}
+.form dl dd {
+    width:40px;
+    padding: 5px;
+    margin: 0;
+}
+
+.calc-btn {
+    width: 80px;
+    height: 30px;
+    border: 1px solid #333;
+    margin-left: 100px;
+}
+.calc-btn:hover{
+    cursor: pointer;
+}
+.box {
+    box-sizing: border-box;
+    width: 300px;
+    height: 25px;
+    margin-right: auto; 
+    padding: 0 0px;
+    text-align: left;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+#renunit { visibility: hidden; }   /* 非表示 */

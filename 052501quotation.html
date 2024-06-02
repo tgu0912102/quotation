@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>見積計算フォーム(チラシ)</title>
+    <meta name="keywords" content="#">
+    <meta name="discription" content="計算">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shurink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="#">
+    <link rel="apple-touch-icon" href="#">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header1">
+<h1 class="toptitle">見積計算表</h1>
+<nav class="nav">
+    <ul class="sevillana-regular">
+        <li class="lis"><a href="#" class="none">A3ペラ</a></li>
+        <li class="lis"><a href="#" class="none">A4ペラ</a></li>
+        <li class="lis"><a href="#" class="none">ハガキ</a></li>
+    </ul>
+</nav>
+</header>
+<main>
+<form class="a4_form">
+    <div class="zentai">
+        <seciton>
+            <h1>A4 ペラ</h1>
+            <p>製作中</p>
+        </section>
+    </div>
+    <dl>
+        <dt>数量(枚):</dt>
+        <dd><input type="number" class="box" name="bfp" id="mai"></dd>
+        <dt>印刷面:</dt>
+        <dd><select name="pside" id="selectSide">
+            <option value="">-</option>
+            <option value="1">片面</option>
+            <option value="2">両面</option>
+          </select><dd>  
+        <dt>用紙(種類):</dt>
+         <dd><select name="papers" id="selectPaper">
+            <option value="">-</option>
+            <option value="215">上質</option>
+            <option value="224">コート</option>
+            <option value="224">マットコート</option>
+          </select><dd>  
+        <dt>kg単価<dt>
+        <label><dd><input type="number" id="pptype" class="box" name="paper" readonly=""></dd></label>
+        <dt>連量(kg):</dt>
+        <dd><input id="ticketNum" type="number" name="ticketNum" list="defaultNumbers" step="0.01" min="0" max="100" /></dd>
+            <span class="validity"></span>
+            <datalist id="defaultNumbers">
+              <option value="62.5"></option>
+              <option value="76.5"></option>
+              <option value="93.5"></option>
+            </datalist>
+        <dt><dt>
+        <label><dd><input type="number" id="renunit" class="box" name="weight" readonly=""></dd></label> 
+    
+
+        <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value);" value="計算"></p>
+        
+        <dt>用紙代:</dt>
+        <dd><input id="leaf" class="box" type="text" readonly=""></dd>
+        <dt>用紙代単価:</dt>
+        <dd><input id="unitleafprice" class="box" type="text" readonly=""></dd>
+        <dt>印刷代:</dt>
+        <dd><input id="print" class="box" type="text" readonly=""></dd>
+        <dt>枚単価:</dt>
+        <dd><input id="unitprice" class="box" type="text" readonly=""></dd> 
+        <dt>金額:</dt>
+        <dd><input id="totalamount" class="box" type="text" readonly=""></dd> 
+
+    </dl>
+</form>
+</main> 
+<script>
+    var select = document.getElementById('selectPaper');
+    select.onchange = function(){
+    let print_value = document.getElementById('pptype').value = (this.value);
+} 
+
+    let bfp_value = ""
+    let lessThan8000 = lessThan < 8000
+    if (bfp_value < 2000 || bfp_value >8000) {
+        bfp_value= document.getElementById('mai').value = (bfp_value * 2);
+    }
+    
+
+
+function calc(ticketNum, papers, bfp) {     
+    
+        
+        let leaf_value = document.getElementById('leaf').value = Math.round((papers * ticketNum)*(bfp/8))/1000;
+        if( bfp < 2000 ){
+        leaf_value = document.getElementById('leaf').value = Math.round(((papers * ticketNum)*(bfp/8))/1000)*2;
+        }else if(bfp > 2001 || bfp < 8000){
+        leaf_value = document.getElementById('leaf').value = Math.round(((papers * ticketNum)*(bfp/8))/1000)*1.2;   
+        }
+        if( bfp > 8001 ){
+        leaf_value = document.getElementById('leaf').value = Math.round((papers * ticketNum)*(bfp/8))/1000;
+        }
+    
+        let unitleafprice = document.getElementById('unitleafprice').value = Math.abs(leaf_value / bfp);
+        
+         
+        
+}        
+
+
+
+
+</script>
+
+</body>
+</html>
