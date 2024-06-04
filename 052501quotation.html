@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class ="haikei>
 <header class="header1">
 <h1 class="toptitle">見積計算表</h1>
 <nav class="nav">
     <ul class="sevillana-regular">
-        <li class="lis"><a href="#" class="none">A3ペラ</a></li>
-        <li class="lis"><a href="#" class="none">A4ペラ</a></li>
-        <li class="lis"><a href="#" class="none">ハガキ</a></li>
+        <li class="lis"><a href="quotationa3.html" class="none">A3ペラ</a></li>
+        <li class="lis"><a href="quotation.html" class="none">A4ペラ</a></li>
+        <li class="lis"><a href="quotationapos.html" class="none">ハガキ</a></li>
     </ul>
 </nav>
 </header>
@@ -63,10 +64,10 @@
 
         <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value);" value="計算"></p>
         
-        <dt>用紙代:</dt>
-        <dd><input id="leaf" class="box" type="text" readonly=""></dd>
         <dt>用紙代単価:</dt>
         <dd><input id="unitleafprice" class="box" type="text" readonly=""></dd>
+        <dt>用紙代:</dt>
+        <dd><input id="leaf" class="box" type="text" readonly="" ></dd>
         <dt>印刷代:</dt>
         <dd><input id="print" class="box" type="text" readonly=""></dd>
         <dt>枚単価:</dt>
@@ -80,38 +81,39 @@
 <script>
     var select = document.getElementById('selectPaper');
     select.onchange = function(){
-    let print_value = document.getElementById('pptype').value = (this.value);
+    let pptype_value = document.getElementById('pptype').value = (this.value);
 } 
 
-    let bfp_value = ""
-    let lessThan8000 = lessThan < 8000
-    if (bfp_value < 2000 || bfp_value >8000) {
-        bfp_value= document.getElementById('mai').value = (bfp_value * 2);
-    }
     
 
 
 function calc(ticketNum, papers, bfp) {     
+            
+
+
     
-        
-        let leaf_value = document.getElementById('leaf').value = Math.round((papers * ticketNum)*(bfp/8))/1000;
+        let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
         if( bfp < 2000 ){
-        leaf_value = document.getElementById('leaf').value = Math.round(((papers * ticketNum)*(bfp/8))/1000)*2;
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100;
         }else if(bfp > 2001 || bfp < 8000){
-        leaf_value = document.getElementById('leaf').value = Math.round(((papers * ticketNum)*(bfp/8))/1000)*1.2;   
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*1.2)*100)/bfp)/100;   
         }
         if( bfp > 8001 ){
-        leaf_value = document.getElementById('leaf').value = Math.round((papers * ticketNum)*(bfp/8))/1000;
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((((papers * ticketNum)*(bfp/8))/1000)*100)/bfp)/100;
         }
-    
-        let unitleafprice = document.getElementById('unitleafprice').value = Math.abs(leaf_value / bfp);     
+
+
+        let leaf = document.getElementById('leaf').value =  Math.round((unitleafprice_value *bfp)*100)/100;
         
-}        
+       
+        
 
+}
 
+      
 
 
 </script>
-
+</div>
 </body>
 </html>
