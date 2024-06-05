@@ -29,21 +29,21 @@
     <div class="zentai">
         <seciton>
             <h1>A4 ペラ</h1>
-           <p>全体的に作製中</p>
-　　　　　　<p>用紙代計算はリリース(6/4)</p>
+            <p>全体的に作製中</p>
+　　　　　　 <p>用紙代計算はリリース(6/4)</p>
         </section>
     </div>
     <dl>
         <dt>数量(枚):</dt>
         <dd><input type="number" class="box" name="bfp" id="mai"></dd>
         <dt>印刷面:</dt>
-        <dd><select name="pside" id="selectSide">
+        <dd><select name="pside" id="selectSide" class = "box">
             <option value="">-</option>
             <option value="1">片面</option>
             <option value="2">両面</option>
           </select><dd>  
         <dt>用紙(種類):</dt>
-         <dd><select name="papers" id="selectPaper">
+         <dd><select name="papers" id="selectPaper" class = "box">>
             <option value="">-</option>
             <option value="215">上質</option>
             <option value="224">コート</option>
@@ -51,16 +51,18 @@
           </select><dd>  
         <dt>kg単価<dt>
         <label><dd><input type="number" id="pptype" class="box" name="paper" readonly=""></dd></label>
-        <dt>連量(kg):</dt>
-        <dd><input id="ticketNum" type="number" name="ticketNum" list="defaultNumbers" step="0.01" min="0" max="100" /></dd>
+        <dt>菊判連量(kg):</dt>
+        <dd><input id="ticketNum" type="number" name="ticketNum" list="defaultNumbers" class="box"></dd>
             <span class="validity"></span>
             <datalist id="defaultNumbers">
               <option value="62.5"></option>
               <option value="76.5"></option>
               <option value="93.5"></option>
             </datalist>
-        <dt><dt>
-        <label><dd><input type="number" id="renunit" class="box" name="weight" readonly=""></dd></label> 
+        <dt>菊判必要枚数:</dt>
+　　　　<dd><input  id="kikumai" type="text" class="box" readonly=""></dd>
+　 
+       
     
 
         <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value);" value="計算"></p>
@@ -85,14 +87,14 @@
     let pptype_value = document.getElementById('pptype').value = (this.value);
 } 
 
-    
+
+
 
 
 function calc(ticketNum, papers, bfp) {     
             
-
-
-    
+        
+        let kikumai_value = document.getElementById('kikumai').value = Math.abs(bfp/8);
         let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
         if( bfp < 2000 ){
         unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100;
@@ -105,9 +107,7 @@ function calc(ticketNum, papers, bfp) {
 
 
         let leaf = document.getElementById('leaf').value =  Math.round((unitleafprice_value *bfp)*100)/100;
-        
-       
-        
+               
 
 }
 
