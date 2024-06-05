@@ -29,8 +29,10 @@
     <div class="zentai">
         <seciton>
             <h1>A4 ペラ</h1>
-            <p>全体的に作製中</p>
-　　　　　　 <p>用紙代計算はリリース(6/4)</p>
+            <p>見た目・機能ともに全体的にまだかなり作成中の段階</p>
+　　　　　　 <p>A4ペラの用紙代計算の基本機能はリリース(6/4)<br>
+                オンデマンド印刷代計算機能は実装予定(時期未定)</p>
+　　　　　　　<p> 物価資料掲載価格に基づいた料金を計算できます。 <p>
         </section>
     </div>
     <dl>
@@ -52,9 +54,12 @@
         <dt>kg単価<dt>
         <label><dd><input type="number" id="pptype" class="box" name="paper" readonly=""></dd></label>
         <dt>菊判連量(kg):</dt>
-        <dd><input id="ticketNum" type="number" name="ticketNum" list="defaultNumbers" class="box"></dd>
+        <dd><input id="ticketNumid" type="number" name="ticketNum" list="defaultNumbers" class="box"></dd>
             <span class="validity"></span>
             <datalist id="defaultNumbers">
+              <option value="47"></option>
+              <option value="48.5"></option>
+              <option value="50.5"></option>
               <option value="62.5"></option>
               <option value="76.5"></option>
               <option value="93.5"></option>
@@ -66,6 +71,7 @@
     
 
         <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value);" value="計算"></p>
+        <p><input type="button" id="cl-btn" class="calc-btn" onclick="clearFormAll(); clearText();" value="クリア"></p>
         
         <dt>用紙代単価:</dt>
         <dd><input id="unitleafprice" class="box" type="text" readonly=""></dd>
@@ -94,7 +100,7 @@
 function calc(ticketNum, papers, bfp) {     
             
         
-        let kikumai_value = document.getElementById('kikumai').value = Math.abs((bfp/8)*1)/1;
+        let kikumai_value = document.getElementById('kikumai').value = Math.round((bfp/8)*1)/1;
         let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
         if( bfp < 2000 ){
         unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100;
@@ -111,7 +117,53 @@ function calc(ticketNum, papers, bfp) {
 
 }
 
-      
+function clearFormAll() {
+    for (var i=0; i<document.forms.length; ++i) {
+        clearForm(document.forms[i]);
+    }
+}
+function clearForm(form) {
+    for(var i=0; i<form.elements.length; ++i) {
+        clearElement(form.elements[i]);
+    }
+}
+function clearElement(element) {
+    switch(element.type) {
+        case "hidden":
+        case "submit":
+        case "reset":
+        case "button":
+        case "image":
+            return;
+        case "file":
+            return;
+        case "text":
+        case "password":
+        case "textarea":
+            element.value = "";
+            return;
+        case "checkbox":
+        case "radio":
+            element.checked = false;
+            return;
+        case "select-one":
+        case "select-multiple":
+            element.selectedIndex = 0;
+            return;
+        default:
+    }
+}
+
+function clearText(){
+      var maitextForm = document.getElementById('mai');
+     maitextForm.value = '';
+      var tntextForm = document.getElementById('ticketNumid');
+     tntextForm.value = '';
+       var pptextForm = document.getElementById('pptype');
+     pptextForm.value = '';
+}
+
+
 
 
 </script>
