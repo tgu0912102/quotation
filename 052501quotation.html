@@ -94,7 +94,7 @@
 function calc(ticketNum, papers, bfp) {     
             
         
-        let kikumai_value = document.getElementById('kikumai').value = Math.abs(bfp/8);
+        let kikumai_value = document.getElementById('kikumai').value = Math.abs((bfp/8)*1)/1;
         let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
         if( bfp < 2000 ){
         unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100;
