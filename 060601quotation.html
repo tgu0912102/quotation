@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>見積計算フォーム(チラシ)</title>
+    <meta name="keywords" content="#">
+    <meta name="discription" content="計算">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shurink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="#">
+    <link rel="apple-touch-icon" href="#">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class ="haikei">
+<header class="header1">
+<h1 class="toptitle">見積計算表</h1>
+<nav class="nav">
+    <ul class="sevillana-regular">
+        <li class="lis"><a href="quotationa3.html" class="none">A3ペラ</a></li>
+        <li class="lis"><a href="052501quotation.html" class="none">A4ペラ</a></li>
+        <li class="lis"><a href="quotationapos.html" class="none">ハガキ</a></li>
+    </ul>
+</nav>
+</header>
+<main>
+<form class="a4_form" name="quoform">
+    <div class="zentai">
+        <seciton>
+            <h1>A4 ペラ</h1>
+            <p>見た目・機能ともに全体的にまだかなり作成中の段階</p>
+            <p>A4ペラの用紙代計算の基本機能はリリース(6/4)<br>
+                オンデマンド印刷代計算機能は実装予定(時期未定)</p>
+            <p> 物価資料掲載価格に基づいた料金を計算できます。 <p>
+        </section>
+    </div>
+    <div class="formZen">
+    <dl>
+        <dt>数量(枚):</dt>
+         
+         <dd class="yoko"><input type="number" class="box" name="bfp" id="mai"></dd>
+         <dd class="yoko"><input type ="button" class="clrbtn" value="Clear" onclick="clearText()" /></dd>
+      
+        <dt>印刷面:</dt>
+        <dd><select name="pside" id="selectSide" class = "box">
+            <option value="">-</option>
+            <option value="1">片面</option>
+            <option value="2">両面</option>
+          </select><dd>  
+        <dt>用紙(種類):</dt>
+         <dd><select name="papers" id="selectPaper" class = "box">>
+            <option value="">-</option>
+            <option value="215">上質</option>
+            <option value="224">コート</option>
+            <option value="224">マットコート</option>
+          </select><dd>  
+        <dt>kg単価<dt>
+        <label><dd><input type="number" id="pptype" class="box" name="paper" readonly=""></dd></label>
+        <dt>菊判連量(kg):</dt>
+        <dd><input id="ticketNumid" type="search" name="ticketNum" list="defaultNumbers" class="box"></dd>
+            <span class="validity"></span>
+            <datalist id="defaultNumbers">
+              <option value="47"></option>
+              <option value="48.5"></option>
+              <option value="50.5"></option>
+              <option value="62.5"></option>
+              <option value="76.5"></option>
+              <option value="93.5"></option>
+            </datalist>
+        <dt>菊判必要枚数:</dt>
+        <dd><input  id="kikumai" type="text" class="box" readonly=""></dd>
+       
+    
+
+        <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value);" value="Calculate"></p>
+        <p><input type="button" id="cl-btn" class="calc-btn" onclick="resetForm()" value="Reset Form"></p>
+        
+        <dt>用紙代単価:</dt>
+        <dd><input id="unitleafprice" class="box" type="text" readonly=""></dd>
+        <dt>用紙代:</dt>
+        <dd><input id="leaf" class="box" type="text" readonly="" ></dd>
+        <dt>印刷代:</dt>
+        <dd><input id="print" class="box" type="text" readonly=""></dd>
+        <dt>枚単価:</dt>
+        <dd><input id="unitprice" class="box" type="text" readonly=""></dd> 
+        <dt>金額:</dt>
+        <dd><input id="totalamount" class="box" type="text" readonly=""></dd> 
+
+    </dl>
+    </div>
+</form>
+</main> 
+<script>
+    var select = document.getElementById('selectPaper');
+    select.onchange = function(){
+    let pptype_value = document.getElementById('pptype').value = (this.value);
+} 
+
+
+
+
+
+function calc(ticketNum, papers, bfp) {     
+            
+        
+        let kikumai_value = document.getElementById('kikumai').value = Math.round((bfp/8)*1)/1;
+        let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
+        if( bfp < 2000 ){
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100;
+        }else if(bfp > 2001 || bfp < 8000){
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*1.2)*100)/bfp)/100;   
+        }
+        if( bfp > 8001 ){
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((((papers * ticketNum)*(bfp/8))/1000)*100)/bfp)/100;
+        }
+
+
+        let leaf = document.getElementById('leaf').value =  Math.round((unitleafprice_value *bfp)*100)/100;
+               
+
+}
+
+function resetForm() {
+        document.quoform.reset();
+    }
+
+function clearText() {
+       var textForm1 = document.getElementById("mai");
+    textForm1.value = "";
+}
+
+
+
+</script>
+</div>
+</body>
+</html>

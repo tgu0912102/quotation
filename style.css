@@ -54,7 +54,6 @@ a:visited { color: aliceblue;}
 .sevillana-regular {
     
 }
-]
 
 .diet_form {
     background: #e3dfdc;
@@ -62,17 +61,12 @@ a:visited { color: aliceblue;}
     text-align: left;
     margin-top: 0;
 }
-.form dl dt {
-    width: 400px;
-    height: 40px;
-    padding: 40px 0;
-    line-height: 0px;
-   
+form dl dt {
+  
 }
-.form dl dd {
-    width:40px;
-    padding: 5px;
-    margin: 0;
+form dl dd  {
+    
+
 }
 
 .calc-btn {
@@ -80,10 +74,16 @@ a:visited { color: aliceblue;}
     height: 30px;
     border: 1px solid #333;
     margin-left: 100px;
+    margin-top:10px;
+    margin-bottom: 10px;
+    background-color: black;
+    color:#fff;
 }
 .calc-btn:hover{
     cursor: pointer;
 }
+
+
 .box {
     box-sizing: border-box;
     width: 300px;
@@ -99,3 +99,14 @@ input[type="number"]::-webkit-inner-spin-button{
     margin: 0;
 }
 #renunit { visibility: hidden; }   /* 非表示 */
+
+
+.yoko {
+    display: inline-block;
+}
+
+.clrbtn{
+    width:60px;
+    background-color: black;
+    color:#fff;
+}
