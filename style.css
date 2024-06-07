@@ -8,14 +8,17 @@
 .zentai {
      background-color: #e3dfdc;
      font-size: medium;
-     margin:0;
+     margin-bottom: 10px;
 }
 .header1{
     position: relative;
     padding: 15px 0 0;
     background-color: #fff5e0;
 }
-.a4_form{ background-color: #e3dfdc;
+.a4_form{ 
+    background-color: #e3dfdc;
+    padding-left: 10px;
+    padding-bottom: 50px;
 
 }
 
@@ -93,6 +96,13 @@ form dl dd  {
     text-align: left;
 }
 
+.box:focus{
+    border: 1px solid #ccc;
+}
+.box1{
+    background-color: #EEE;
+}
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button{
     -webkit-appearance: none;
@@ -105,8 +115,12 @@ input[type="number"]::-webkit-inner-spin-button{
     display: inline-block;
 }
 
-.clrbtn{
+.clrbtn {
     width:60px;
     background-color: black;
     color:#fff;
 }
+
+select option:nth-child(1) {
+    color: #EEE;
+  }
