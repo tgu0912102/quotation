@@ -35,6 +35,7 @@
             <p>・クリアボタンと菊判枚数自動表示機能追加(6/6)</p>
             <p>オンデマンド印刷代計算機能は実装予定(時期未定)</p>
             <p>物価資料掲載価格に基づいた料金を計算できます。</p>
+            <p>価格は全て税抜きです。</p>
            
         </section>
     </div>
@@ -42,7 +43,7 @@
     <dl>
         <dt>数量(枚):</dt>
          
-         <dd class="yoko"><input type="number" class="box" name="bfp" id="mai"placeholder="入力してください" oninput="updateOutput()"></dd>
+         <dd class="yoko"><input type="text" inputmode="numeric" pattern="\d*" class="box" name="bfp" id="mai"placeholder="入力してください" oninput="updateOutput()" ></dd>
          <dd class="yoko"><input type ="button" class="clrbtn" value="Clear" name="clr3" onclick="clearText()" /></dd>
             
         <dt>菊判必要枚数(枚):</dt>
@@ -71,6 +72,14 @@
               <option value="76.5"></option>
               <option value="93.5"></option>
              </datalist>
+
+         <dt>色数:</dt>
+          <dd><select name="color" id="selectColor" class = "box">
+             <option value="">選択してください</option>
+             <option value="1">モノクロ</option>
+             <option value="2">フルカラー</option>
+            </select><dd>  
+         
         
          <dt>印刷面:</dt>
           <dd><select name="pside" id="selectSide" class = "box">
@@ -78,22 +87,22 @@
              <option value="1">片面</option>
              <option value="2">両面</option>
              </select><dd>  
-       
+         
     
 
-        <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value);" value="Calculate"></p>
+        <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value, pside.value, color.value);" value="Calculate"></p>
         <p><input type="button" id="cl-btn" class="calc-btn" onclick="resetForm()" value="Reset Form"></p>
         
         
-        <dt>用紙代単価:</dt>
+        <dt>用紙代単価(円):</dt>
          <dd><input id="unitleafprice" class="box " type="text" readonly=""></dd>
-        <dt>用紙代:</dt>
+        <dt>用紙代(円):</dt>
          <dd><input id="leaf" class="box " type="text" readonly="" ></dd>
-        <dt>印刷代:</dt>
+        <dt>印刷代(円):</dt>
          <dd><input id="print" class="box " type="text" readonly=""></dd>
-        <dt>枚単価:</dt>
+        <dt>枚単価(円):</dt>
          <dd><input id="unitprice" class="box " type="text" readonly=""></dd> 
-        <dt>金額:</dt>
+        <dt>金額(円):</dt>
          <dd><input id="totalamount" class="box " type="text" readonly=""></dd> 
 
     </dl>
@@ -104,7 +113,8 @@
       var select = document.getElementById('selectPaper');
       select.onchange = function(){
       let pptype_value = document.getElementById('pptype').value = (this.value);
-} 
+      }
+    
 
 function updateOutput() {
             // 枚数の値をゲット
@@ -117,29 +127,58 @@ function updateOutput() {
             // 菊判必要枚数をリアタイ表示
             const outputElement = document.getElementById('kikumai');
             outputElement.value = doubleValue;
+           
         } 
 
        
 
 
-function calc(ticketNum, papers, bfp) {     
+function calc(ticketNum, papers, bfp, pside, color) {    
             
         
         let kikumai_value = document.getElementById('kikumai').value = Math.round((bfp/8)*1)/1;
-        let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp) ;
-        if( bfp < 2000 ){
+        let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
+        if( bfp <= 1999 ){
         unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100 ;
-        }else if(bfp > 2001 || bfp < 8000){
+        }else if(bfp >= 2000 || bfp <= 7999){
         unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*1.2)*100)/bfp)/100 ;   
         }
-        if( bfp > 8001 ){
+        if( bfp >= 8000 ){
         unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((((papers * ticketNum)*(bfp/8))/1000)*100)/bfp)/100 ;
         }
-        let leaf = document.getElementById('leaf').value =  Math.round((unitleafprice_value *bfp)*100)/100 ;
-      
+    
+        leaf_value= document.getElementById('leaf').value =  Math.round((unitleafprice_value *bfp)*100)/100 ;
 
+        const print_value = document.getElementById('print').value = Math.round(bfp * 0) ;
+
+        if(color === "1"){
+         if(pside === "1"){
+            if(bfp >=print_value && bfp <= 10){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 24) ;
+            }if(bfp >=11 && bfp <= 50){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22) ;
+            }if(bfp >=51 && bfp <= 100){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 21) ;
+            }if(bfp >=101 && bfp <= 200){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 19) ;
+            }if(bfp >=201 && bfp <= 300){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 18) ;
+            }if(bfp >=301 && bfp <= 500){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 16) ;
+            }if(bfp >=501 && bfp <= 1000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 15) ;
+            }if(bfp >=1001 && bfp <= 2000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 13) ;
+            }else{
+                print_value = document.getElementById('print').value = "ご相談"; 
+            }
+        
+}
+}
 }
 
+
+  
 function resetForm() {
         document.quoform.reset();
     }
@@ -160,7 +199,9 @@ function resetSearch() {
 
 
 
+
 </script>
 </div>
+
 </body>
 </html>
