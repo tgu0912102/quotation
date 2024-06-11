@@ -101,7 +101,7 @@
          <dd><input id="leaf" class="box " type="text" readonly="" ></dd>
         <dt>印刷代(円)※通しA3:</dt>
          <dd><input id="print" class="box " type="text" readonly=""></dd>
-        <dt>加工代(円):</dt>
+        <dt>加工(断裁)代(円):</dt>
          <dd><input id="cut" class="box " type="text" readonly=""></dd> 
         <dt>枚単価(円):</dt>
          <dd><input id="unitprice" class="box " type="text" readonly=""></dd> 
@@ -113,11 +113,12 @@
 </form>
 </main> 
 <script>
+      //kg単価の数値を取得して別枠内に表示
       var select = document.getElementById('selectPaper');
       select.onchange = function(){
       let pptype_value = document.getElementById('pptype').value = (this.value);
       }
-    
+      
 
 function updateOutput() {
             // 枚数の値をゲット
@@ -153,10 +154,8 @@ function calc(ticketNum, papers, bfp, pside, color) {
 
 
         let print_value = document.getElementById('print').value = Math.round(bfp * 0) ;
-        let print_value2 = document.getElementById('print').value = Math.round(bfp * 0) ;
-        let print_value3 = document.getElementById('print').value = Math.round(bfp * 0) ;
-        let print_value4 = document.getElementById('print').value = Math.round(bfp * 0) ;
 
+        //モノクロ片面(A3通し)条件式
         if(color === "1"){
          if(pside === "1"){
             if(bfp/2 >=print_value && bfp/2 <= 10){
@@ -176,92 +175,93 @@ function calc(ticketNum, papers, bfp, pside, color) {
             }else if(bfp/2 >=1001 && bfp/2 <= 2000){
                 print_value = document.getElementById('print').value = Math.abs(bfp * 22) ;
             }else{
-                print_value = document.getElementById('print').value = "ご相談"; 
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22) ;
                 
             }
       
-}
-}
+         }
+        }
 
         //モノクロ両面(A3通し)条件式
         if(color === "1"){
          if(pside === "2"){
             if(bfp/2 >=print_value && bfp/2 <= 10){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 80) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 80) ;
             }else if(bfp/2 >=11 && bfp/2 <= 50){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 74) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 74) ;
             }else if(bfp/2 >=51 && bfp/2 <= 100){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 70) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 70) ;
             }else if(bfp/2 >=101 && bfp/2 <= 200){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 64) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 64) ;
             }else if(bfp/2 >=201 && bfp/2 <= 300){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 60) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 60) ;
             }else if(bfp/2 >=301 && bfp/2 <= 500){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 54) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 54) ;
             }else if(bfp/2 >=501 && bfp/2 <= 1000){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 50) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 50) ;
             }else if(bfp/2 >=1001 && bfp/2 <= 2000){
-                print_value2 = document.getElementById('print').value = Math.abs(bfp * 44) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 44) ;
             }else{
-                print_value2 = document.getElementById('print').value = "ご相談"; 
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22); 
                 
             }
            
         
-}
-}
+          }
+        }
         //カラー片面(A3通し)条件式
         if(color === "2"){
          if(pside === "1"){
             if(bfp/2 >=print_value && bfp/2 <= 10){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 104) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 104) ;
             }else if(bfp/2 >=11 && bfp/2 <= 50){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 96) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 96) ;
             }else if(bfp/2 >=51 && bfp/2 <= 100){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 91) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 91) ;
             }else if(bfp/2 >=101 && bfp/2 <= 200){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 83) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 83) ;
             }else if(bfp/2 >=201 && bfp/2 <= 300){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 78) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 78) ;
             }else if(bfp/2 >=301 && bfp/2 <= 500){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 70) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 70) ;
             }else if(bfp/2 >=501 && bfp/2 <= 1000){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 65) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 65) ;
             }else if(bfp/2 >=1001 && bfp/2 <= 2000){
-                print_value3 = document.getElementById('print').value = Math.abs(bfp * 57) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 57) ;
             }else{
-                print_value3 = document.getElementById('print').value = "ご相談"; 
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22); 
                 
             }
         
-}
-}
+         }
+        }
         //カラー両面(A3通し)条件式
         if(color === "2"){
          if(pside === "2"){
             if(bfp/2 >=print_value && bfp/2 <= 10){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 208) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 208) ;
             }else if(bfp/2 >=11 && bfp/2 <= 50){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 192) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 192) ;
             }else if(bfp/2 >=51 && bfp/2 <= 100){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 182) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 182) ;
             }else if(bfp/2 >=101 && bfp/2 <= 200){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 166) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 166) ;
             }else if(bfp/2 >=201 && bfp/2 <= 300){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 156) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 156) ;
             }else if(bfp/2 >=301 && bfp/2 <= 500){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 140) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 140) ;
             }else if(bfp/2 >=501 && bfp/2 <= 1000){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 130) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 130) ;
             }else if(bfp/2 >=1001 && bfp/2 <= 2000){
-                print_value4 = document.getElementById('print').value = Math.abs(bfp * 114) ;
+                print_value = document.getElementById('print').value = Math.abs(bfp * 114) ;
             }else{
-                print_value4 = document.getElementById('print').value = "ご相談"; 
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22); 
                
             }
         
-}
-}
+         }
+        }
+            //加工（断裁）条件式
             let cut_value = document.getElementById('cut').value = Math.abs(bfp * 0) ;
             if(bfp >1 && bfp <= 1000 ){
                 cut_value = document.getElementById('cut').value = Math.round((bfp * 0)+1000) ;
@@ -277,12 +277,16 @@ function calc(ticketNum, papers, bfp, pside, color) {
                 cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*0.80)*1)/1 ;
             }else if(bfp >30001 && bfp <= 50000){
                 cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*0.75)*1)/1 ;
-            
-            }
-            
+            } 
+            //断裁最低料金の条件式           
             if(cut_value < 1000){
             cut_value = document.getElementById('cut').value = Math.abs((bfp * 0)+1000);
-}
+            }
+            let unitprice_value = document.getElementById('unitprice').value = Math.round(((leaf_value + print_value + cut_value)/bfp)*100) /100 ;
+            let totalamount_value = document.getElementById('totalamount').value = Math.round((unitprice_value * bfp)*1)/1 ;
+         
+            
+            
       
 }
   
@@ -305,7 +309,7 @@ function resetSearch() {
 }
 
 
-// 付け焼き刃の知識で急造した雑なツクリです。悪しからず。
+// 急造した雑なツクリです。悪しからず。
 </script>
 </div>
 
