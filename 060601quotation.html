@@ -25,9 +25,10 @@
 </nav>
 </header>
 <main>
-<form class="a4_form" name="quoform">
-    <div class="zentai">
-        <seciton>
+ <seciton>
+ <div class="parrelease">
+
+         <div class="release">
             <h1>A4 ペラ</h1>
             <p>見た目・機能ともに全体的にまだかなり作成中の段階</p>
             <p>・A4ペラの用紙代計算の基本機能リリース(6/4)</p>
@@ -36,16 +37,19 @@
             <p>・オンデマンド印刷代計算機能実装(階段式)(6/10)</p>
             <p>・化粧断ち料金計算機能追加(割増計算可)(6/10)</p>
             <p>物価資料掲載価格に基づいた料金を計算できます。</p>
-            <p>価格は全て税抜きです。</p>
+            <p>価格は全て税抜きです。</p></div>
            
-        </section>
+    
     </div>
+
+        </section>
+<form class="a4_form" name="quoform">
     <div class="formZen">
     <dl>
-        <dt>数量(枚):</dt>
+        <div class="dtpadd"><dt>数量(枚):</dt></div>
          
-         <dd class="yoko"><input type="text" inputmode="numeric" pattern="\d*" class="box" name="bfp" id="mai"placeholder="入力してください" oninput="updateOutput()" ></dd>
-         <dd class="yoko"><input type ="button" class="clrbtn" value="Clear" name="clr3" onclick="clearText()" /></dd>
+        <div class="clbtnWidth"><dd class="yoko"><input type="text" inputmode="numeric" pattern="\d*" class="box" name="bfp" id="mai"placeholder="入力してください" oninput="updateOutput()" ></dd>
+         <dd class="yoko"><input type ="button" class="clrbtn" value="Clear" name="clr3" onclick="clearText()" /></dd></div>
             
         <dt>菊判必要枚数(枚):</dt>
          <dd class="yoko"><input  id="kikumai" type="text" class="box box1" placeholder="自動計算" readonly=""></dd>
@@ -62,8 +66,8 @@
         <label><dd><input type="text" id="pptype" class="box box1" name="paper" readonly="" placeholder="用紙(種類)を選択後に表示"></dd></label>
         
         <dt>菊判連量(kg):</dt>
-         <dd class ="yoko"><input id="ticketNumid" type="search" name="ticketNum" list="defaultNumbers" class="box" placeholder="入力してください"></dd>
-         <dd class="yoko"><input type ="button" class="clrbtn" value="Clear" onclick="resetSearch()"></dd>
+         <div class="clbtnWidth"><dd class ="yoko"><input id="ticketNumid" type="search" name="ticketNum" list="defaultNumbers" class="box" placeholder="入力してください"></dd>
+         <dd class="yoko"><input type ="button" class="clrbtn" value="Clear" onclick="resetSearch()"></dd></div>
             <span class="validity"></span>
              <datalist id="defaultNumbers">
               <option value="47"></option>
@@ -79,34 +83,32 @@
              <option value="">選択してください</option>
              <option value="1">モノクロ</option>
              <option value="2">フルカラー</option>
-            </select><dd>  
-         
-        
-         <dt>印刷面:</dt>
-          <dd><select name="pside" id="selectSide" class = "box">
+            </select></dd>
+
+           <dt>印刷面:</dt>
+           <dd><select name="pside" id="selectSide" class = "box">
              <option value="">選択してください</option>
              <option value="1">片面</option>
              <option value="2">両面</option>
-             </select><dd>  
+             </select></dd>  
          
-    
-
         <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value, pside.value, color.value);" value="Calculate"></p>
         <p><input type="button" id="cl-btn" class="calc-btn" onclick="resetForm()" value="Reset Form"></p>
-        
-        
+            
         <dt>用紙代単価(円):</dt>
          <dd><input id="unitleafprice" class="box " type="text" readonly=""></dd>
         <dt>用紙代(円):</dt>
-         <dd><input id="leaf" class="box " type="text" readonly="" ></dd>
+         <dd><input id="leaf" class="box " type="text" readonly="" >
+        <dt>印刷基本料金:</dt>
+         <dd><input id="baseprint" class="box " type="text" readonly=""></dd>
         <dt>印刷代(円)※通しA3:</dt>
          <dd><input id="print" class="box " type="text" readonly=""></dd>
         <dt>加工(断裁)代(円):</dt>
-         <dd><input id="cut" class="box " type="text" readonly=""></dd> 
+         <dd><input id="cut" class="box " type="text" readonly=""></dd>
         <dt>枚単価(円):</dt>
-         <dd><input id="unitprice" class="box " type="text" readonly=""></dd> 
+         <dd><input id="unitprice" class="box " type="text" readonly=""></dd>
         <dt>金額(円):</dt>
-         <dd><input id="totalamount" class="box " type="text" readonly=""></dd> 
+         <dd><input id="totalamount" class="box " type="text" readonly=""></dd>
 
     </dl>
     </div>
@@ -139,6 +141,7 @@ function updateOutput() {
 function calc(ticketNum, papers, bfp, pside, color) {    
             
         
+        let baseprint_value = document.getElementById('baseprint').value = Math.round(2000*1);
         let kikumai_value = document.getElementById('kikumai').value = Math.round((bfp/8)*1)/1;
         let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
         if( bfp <= 1999 ){
@@ -282,14 +285,33 @@ function calc(ticketNum, papers, bfp, pside, color) {
             if(cut_value < 1000){
             cut_value = document.getElementById('cut').value = Math.abs((bfp * 0)+1000);
             }
-            let unitprice_value = document.getElementById('unitprice').value = Math.round(((leaf_value + print_value + cut_value)/bfp)*100) /100 ;
+            let unitprice_value = document.getElementById('unitprice').value = Math.round(((leaf_value + print_value + cut_value + baseprint_value)/bfp)*100) /100 ;
             let totalamount_value = document.getElementById('totalamount').value = Math.round((unitprice_value * bfp)*1)/1 ;
-         
-            
-            
+
+
+            //カンマ表示　mapとかわからんから全部このメソッド使う
+            let num = totalamount_value;
+　　　　　　let formattedNum0 = num.toLocaleString();
+            document.getElementById("totalamount").value = formattedNum0;
+            let num1 = unitprice_value;
+　　　　　　let formattedNum1 = num1.toLocaleString();
+            document.getElementById("unitprice").value = formattedNum1;
+            let num2 = cut_value;
+　　　　　　let formattedNum2 = num2.toLocaleString();
+            document.getElementById("cut").value = formattedNum2;
+            let num3 = print_value;
+　　　　　　let formattedNum3 = num3.toLocaleString();
+            document.getElementById("print").value = formattedNum3;
+            let num4 = baseprint_value;
+　　　　　　let formattedNum4 = num4.toLocaleString();
+            document.getElementById("baseprint").value = formattedNum4;
+            let num5 = leaf_value;
+　　　　　　let formattedNum5 = num5.toLocaleString();
+            document.getElementById("leaf").value = formattedNum5;
+
       
 }
-  
+ 
 function resetForm() {
         document.quoform.reset();
     }
@@ -309,7 +331,7 @@ function resetSearch() {
 }
 
 
-// 急造した雑なツクリです。悪しからず。
+// 生成AIは使ってません。 急造した雑なツクリです。悪しからず。
 </script>
 </div>
 
