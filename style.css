@@ -5,21 +5,50 @@
     margin:0;
 }
 
-.zentai {
+.parrelease {
+     background-color: #e3dfdc;
+     text-align: center; 
+     display:flex;
+    justify-content: center;    
+     
+}
+
+.release {
+    display:flex;
+    justify-content: center;
+     text-align: center;
+     width:300px;
      background-color: #e3dfdc;
      font-size: medium;
-     margin-bottom: 10px;
+     font-size: clamp(10px, 1vw, 32px);
+     display: block;
+  
+   
+     
 }
+
+
+
 .header1{
-    position: relative;
+  
     padding: 15px 0 0;
     background-color: #fff5e0;
+
 }
+
+form {
+    text-align: center;    
+}
+
+
 .a4_form{ 
     background-color: #e3dfdc;
     padding-left: 10px;
     padding-bottom: 50px;
+    display:flex;
+    justify-content: center;
 
+    
 }
 
 .toptitle{
@@ -58,25 +87,11 @@ a:visited { color: aliceblue;}
     
 }
 
-.diet_form {
-    background: #e3dfdc;
-    padding: 0;
-    text-align: left;
-    margin-top: 0;
-}
-form dl dt {
-  
-}
-form dl dd  {
-    
-
-}
-
 .calc-btn {
     width: 80px;
     height: 30px;
     border: 1px solid #333;
-    margin-left: 100px;
+    margin-left: 10px;
     margin-top:10px;
     margin-bottom: 10px;
     background-color: black;
@@ -84,16 +99,17 @@ form dl dd  {
 }
 .calc-btn:hover{
     cursor: pointer;
+    
 }
 
 
 .box {
     box-sizing: border-box;
-    width: 300px;
+    width: 280px;
     height: 25px;
     margin-right: auto; 
     padding: 0 0px;
-    text-align: left;
+    
 }
 
 .box:focus{
@@ -119,8 +135,25 @@ input[type="number"]::-webkit-inner-spin-button{
     width:60px;
     background-color: black;
     color:#fff;
+    
+}
+
+.clbtnWidth {
+     padding-left: 64px;
 }
 
 select option:nth-child(1) {
     color: #EEE;
-  }
+}
+
+.dtpadd{
+    padding-right:200px;
+}
+
+form dt {
+   display:flex;
+   justify-content: left;
+   padding-left: 60px;
+   
+}
+     
