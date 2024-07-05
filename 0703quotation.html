@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>見積計算フォーム(チラシ)</title>
+    <meta name="keywords" content="#">
+    <meta name="discription" content="計算">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shurink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="#">
+    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="style02.css">
+    <link rel="stylesheet" href="grid_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+</head>
+<body>
+<div class ="haikei">
+<div class="destruciton1">
+<header class="header1 destruction3">
+    <div class="accordion">
+        <div class="accordion-item">
+         <h1 class="toptitle"><a href="0619quotation.html"  class="titlelink">印刷料金計算フォーム</a></h1>
+          <div class="accordion-header"><img class="icon" src="./061601.png"></div>
+          <div class="accordion-content open-fixed">
+           <ul>
+            <li><a href="0619quotation.html"  class="none">A4ペラ</a></li>
+            <li><a href="#" class="none" id="openBtn1">A3ペラ</a></li>
+            <li><a href="#" class="none" id="openBtn">ハガキ</a></li>
+            <li><a href="#" class="none" id="openBtn0">A4パンフ</a></li>
+           </ul></div>
+         </div>
+    </div>
+</header>
+</div>
+ 
+<main>
+
+  <div class="container destruction2">
+    <div class="item1"><p></p></div>
+    <div class="item2"><p></p></div>
+    <div class="item3"><p></p></div>
+    <div class="item4"><p></p></div>
+    <div class="item5"><p></p></div>
+    <div class="item6"><p></p></div>
+    <div class="item7"><p></p></div>
+    <div class="item8"><p></p></div>
+    <div class="item9"><p></p></div>
+    <div class="item10"><p></p></div>
+    <div class="item11"><p></p></div>
+    <div class="item12"><p></p></div>
+    <div class="item13"><p></p></div>
+    <div class="item14"><p></p></div>
+   <div class="zentai1">
+    <div class="main-backg">
+  <seciton>
+    <div class="parrelease">
+         <div class="release">
+           
+            <p>とりあえず形になったような状態。</p>
+            <p>・包単価連量による違いを適用(7/3)</p>
+            </p>
+            <p>・動的スタイル追加(6/18)</p>
+　　　　　　<p>・細かいスタイル修正(6/17)</p>
+            <p>・スタイル作成&一応レスポンシブ対応(6/16)</p>
+            <p>・メニューボタン&よくある質問実装(6/16)</p>
+            <p>・化粧断ち料金加算機能追加(割増計算可)(6/15)</p>
+            <p>・オンデマンド印刷代計算機能実装(階段式)(6/14)</p>
+            <p>・クリアボタンと菊判枚数自動表示機能追加(6/14)</p>
+            <p>・用紙代計算リリース(6/13)</p>
+          
+            <p class="achtung">価格は全て税抜きです。</p>
+         </div>
+    </div>
+    
+   </section>
+    <div id="modal" class="modal destruction1">   
+    <div class="modal-content animate__animated animate__fadeInDown">
+    <div class ="destruction0">
+        <p>製作中<p>
+        <input type ="button" value="×" id="closeBtn" class="closeBtn"/>
+        <input type ="image" value="" id="closeBtn" src="./bad.png" class="badBtn"/>
+    </div>
+    </div>
+    </div>
+   
+<form class="a4_form" name="quoform">
+    <div class="formZen">
+    <h2 class="typetitle">計算種別 A4 ペラ</h2>
+    <dl>
+        <div class="dtpadd"><dt>仕上数量(枚):</dt></div>
+         
+        <div class="clbtnWidth"><dd class="yoko"><input type="text" inputmode="numeric" pattern="\d*" class="box2" name="bfp" id="mai"placeholder="入力してください" oninput="updateOutput()" ></dd>
+         <dd class="yoko"><input type ="button" class="clrbtn" value="クリア" name="clr3" onclick="clearText()" /></dd></div>
+        <dt>菊判必要枚数(枚):</dt>
+         <dd class="yoko"><input id="kikumai" type="text" class="box box1" placeholder="自動計算" readonly=""></dd>
+        <dt>用紙(種類):</dt>
+         <dd><select name="papers" id="selectPaper" class = "box" >
+            <option value="" >選択してください</option>
+            <option value="215">上質</option>
+            <option value="224">コート</option>
+            <option value="224">マットコート</option>
+          </select><dd>  
+        <dt>kg単価(円)<dt>
+        <label><dd><input type="text" id="pptype" class="box box1" name="paper" readonly="" placeholder="用紙(種類)を選択後に表示"></dd></label>
+        
+        <dt>菊判連量(kg):</dt>
+         <div class="clbtnWidth"><dd class ="yoko"><input id="ticketNumid" type="search" name="ticketNum" list="defaultNumbers" class="box2" placeholder="入力してください"></dd>
+         <dd class="yoko"><input type ="button" class="clrbtn" value="クリア" onclick="resetSearch()"></dd></div>
+            <span class="validity"></span>
+             <datalist id="defaultNumbers">
+              <option value="47"></option>
+              <option value="48.5"></option>
+              <option value="50.5"></option>
+              <option value="62.5"></option>
+              <option value="76.5"></option>
+              <option value="93.5"></option>
+             </datalist>
+
+         <dt>色数:</dt>
+          <dd><select name="color" id="selectColor" class = "box">
+             <option value="">選択してください</option>
+             <option value="1">モノクロ</option>
+             <option value="2">フルカラー</option>
+            </select></dd>
+
+           <dt>印刷面:</dt>
+           <dd><select name="pside" id="selectSide" class = "box">
+             <option value="">選択してください</option>
+             <option value="1">片面</option>
+             <option value="2">両面</option>
+             </select></dd>  
+         
+        <p><input type="button" id="btn" class="calc-btn" onclick="calc(ticketNum.value, papers.value, bfp.value, pside.value, color.value);" value="計算"></p>
+        <p><input type="button" id="cl-btn" class="calc-btn" onclick="resetForm()" value="リセット"></p>
+            
+        <dt>用紙単価(円):</dt>
+         <dd><input id="unitleafprice" class="box " type="text" readonly=""></dd>
+        <dt>用紙(円):</dt>
+         <dd><input id="leaf" class="box " type="text" readonly="" >
+        <dt>印刷基本料金:</dt>
+         <dd><input id="baseprint" class="box " type="text" readonly=""></dd>
+        <dt>印刷(円)※通しA3:</dt>
+         <dd><input id="print" class="box " type="text" readonly=""></dd>
+        <dt>化粧断ち(円):</dt>
+         <dd><input id="cut" class="box " type="text" readonly=""></dd>
+        <dt>枚単価(円):</dt>
+         <dd><input id="unitprice" class="box " type="text" readonly=""></dd>
+        <dt>金額(円):</dt>
+         <dd><input id="totalamount" class="box " type="text" readonly=""></dd>
+
+    </dl>
+    </div>
+</form>
+<section class="faq">
+    <div class="inner">
+      <h2 class="title">このフォームについて</h2>
+      <div class="faq__contents">
+        <details class="faq__details js-details">
+            <summary class="faq__summary js-summary">
+                どこまで機能を追加できるか<span class="arrow-icon"></span>
+            </summary>
+            <div class="faq__content js-content">
+              <p class="faq__text">オンデマンド機の料金計算であれば計算機能としては完成していますので、冊子も含めて全ての種類の計算機能を実装可能です。
+                条件式に打ち込む内容が多いので時間が要ります。オフセットについては条件分岐が多く複雑すぎるので要検討です。
+            </div>
+          </details>
+        <details class="faq__details js-details">
+          <summary class="faq__summary js-summary">
+            価格の根拠は何か<span class="arrow-icon"></span>
+          </summary>
+          <div class="faq__content js-content">
+            <p class="faq__text">建設物価協会発行の「物価資料」より用紙単価、オンデマンド印刷通し単価及び加工単価を適用し計算しています。
+                2000枚以上の設定がないためそれ以上は全て2000枚の単価を適用しています。
+            </p>
+          </div>
+        </details>
+        <details class="faq__details js-details">
+          <summary class="faq__summary js-summary">
+            オンデマンド通し単価は用紙代込では<span class="arrow-icon"></span>
+          </summary>
+          <div class="faq__content js-content">
+            <p class="faq__text"> その通りですが、ここでは別途計算し加算しています。用紙代の計算機能はオンデマンド以外への流用も想定しています。</p>
+          </div>
+        </details>
+        <details class="faq__details js-details">
+          <summary class="faq__summary js-summary">
+            活用方法はあるか<span class="arrow-icon"></span>
+          </summary>
+          <div class="faq__content js-content">
+            <p class="faq__text">あくまでも試作品です。社内の工場で刷れる印刷物くらいは概算をすぐに回答できるメリットがあります。また、内製分の通し単価を物価資料ベースではなく
+                独自に設定する場合も数値を書き換えるだけで対応可能で、テーブルで確認する必要もなくなります。他にも各グループ会社ごとに独自の単価を設定しても
+                この一つのページで計算することが可能です。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+      
+</div>
+</main>
+</div>
+
+<div class="container2 destruction5">
+<footer class="footer1 destruction4">
+    <p class="copyright">
+        <small>&copy;Copyright 2024 Chuden Wing Co. Ltd. All Rights Reserved</small></p>
+</footer>
+<div class="item01"><p></p></div>
+    <div class="item02"><p></p></div>
+    <div class="item03"><p></p></div>
+    <div class="item04"><p></p></div>
+    <div class="item05"><p></p></div>
+    <div class="item06"><p></p></div>
+    <div class="item07"><p></p></div>
+    <div class="item08"><p></p></div>
+    <div class="item09"><p></p></div>
+    <div class="item010"><p></p></div>
+    <div class="item011"><p></p></div>
+    <div class="item012"><p></p></div>
+    <div class="item013"><p></p></div>
+    <div class="item014"><p></p></div>
+    <div class="item015"><p></p></div>
+    <div class="item016"><p></p></div>
+    <div class="item017"><p></p></div>
+    <div class="item018"><p></p></div>
+    <div class="item019"><p></p></div>
+    <div class="item020"><p></p></div>
+    <div class="item021"><p></p></div>
+    <div class="item022"><p></p></div>
+    <div class="item023"><p></p></div>
+    <div class="item024"><p></p></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="main.js"></script>
+<script>
+       //kg単価の数値を取得して別枠内に表示
+       var select = document.getElementById('selectPaper');
+       select.onchange = function(){
+       let pptype_value = document.getElementById('pptype').value = (this.value);
+       }    
+
+function updateOutput() {
+        // 仕上がり枚数の値をゲット
+        const inputElement = document.getElementById('mai');
+        const inputValue = parseFloat(inputElement.value);
+        // 菊判換算になおす。(※A4の式)
+        const doubleValue =  Math.round((inputValue/8)*1)/1;
+        // 菊判必要枚数を下の窓にリアタイ表示
+        const outputElement = document.getElementById('kikumai');
+        outputElement.value = doubleValue;   
+        } 
+
+//以下計算式全部詰め込み！！
+function calc(ticketNum, papers, bfp, pside, color) {    
+                   
+        let baseprint_value = document.getElementById('baseprint').value = Math.round(2000*1);
+        let kikumai_value = document.getElementById('kikumai').value = Math.round((bfp/8)*1)/1;
+        let unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((papers * ticketNum)*(bfp/8)/1000)/bfp);
+        if( bfp <= 1999 ){
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*2)*100)/bfp)/100 ;
+        }else if(bfp >= 2000 || bfp <= 7999){
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*1.2)*100)/bfp)/100 ;   
+        }
+        else if(bfp >=4000 || bfp <= 7999){
+          if(ticketNum >= 31 || ticketNum <= 50.5 ){
+            unitleafprice_value = document.getElementByID('unitleafprice').value = Math.round((((((papers * ticketNum)*(bfp/8))/1000)*1.2)*100)/bfp)/100 ; 
+          }
+        }
+        if( bfp >= 8000 ){
+        unitleafprice_value = document.getElementById('unitleafprice').value = Math.round(((((papers * ticketNum)*(bfp/8))/1000)*100)/bfp)/100 ;
+        }
+        leaf_value= document.getElementById('leaf').value =  Math.round((unitleafprice_value *bfp)*100)/100 ;
+        let print_value = document.getElementById('print').value = Math.round(bfp * 0) ;
+
+       
+        //モノクロ片面(A3通し)条件式
+        if(color === "1"){
+         if(pside === "1"){
+            if(bfp/2 >=print_value && bfp/2 <= 10){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 40) ;
+            }else if(bfp/2 >=11 && bfp/2 <= 50){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 37) ;
+            }else if(bfp/2 >=51 && bfp/2 <= 100){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 35) ;
+            }else if(bfp/2 >=101 && bfp/2 <= 200){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 32) ;
+            }else if(bfp/2 >=201 && bfp/2 <= 300){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 30) ;
+            }else if(bfp/2 >=301 && bfp/2 <= 500){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 27) ;
+            }else if(bfp/2 >=501 && bfp/2 <= 1000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 25) ;
+            }else if(bfp/2 >=1001 && bfp/2 <= 2000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22) ;
+            }else{
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22) ;  
+            }
+         }
+        }
+
+        //モノクロ両面(A3通し)条件式
+        if(color === "1"){
+         if(pside === "2"){
+            if(bfp/2 >=print_value && bfp/2 <= 10){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 80) ;
+            }else if(bfp/2 >=11 && bfp/2 <= 50){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 74) ;
+            }else if(bfp/2 >=51 && bfp/2 <= 100){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 70) ;
+            }else if(bfp/2 >=101 && bfp/2 <= 200){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 64) ;
+            }else if(bfp/2 >=201 && bfp/2 <= 300){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 60) ;
+            }else if(bfp/2 >=301 && bfp/2 <= 500){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 54) ;
+            }else if(bfp/2 >=501 && bfp/2 <= 1000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 50) ;
+            }else if(bfp/2 >=1001 && bfp/2 <= 2000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 44) ;
+            }else{
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22);   
+            }
+         }
+        }
+
+        //カラー片面(A3通し)条件式
+        if(color === "2"){
+         if(pside === "1"){
+            if(bfp/2 >=print_value && bfp/2 <= 10){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 104) ;
+            }else if(bfp/2 >=11 && bfp/2 <= 50){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 96) ;
+            }else if(bfp/2 >=51 && bfp/2 <= 100){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 91) ;
+            }else if(bfp/2 >=101 && bfp/2 <= 200){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 83) ;
+            }else if(bfp/2 >=201 && bfp/2 <= 300){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 78) ;
+            }else if(bfp/2 >=301 && bfp/2 <= 500){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 70) ;
+            }else if(bfp/2 >=501 && bfp/2 <= 1000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 65) ;
+            }else if(bfp/2 >=1001 && bfp/2 <= 2000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 57) ;
+            }else{
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22);     
+            }
+         }
+        }
+        //カラー両面(A3通し)条件式
+        if(color === "2"){
+         if(pside === "2"){
+            if(bfp/2 >=print_value && bfp/2 <= 10){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 208) ;
+            }else if(bfp/2 >=11 && bfp/2 <= 50){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 192) ;
+            }else if(bfp/2 >=51 && bfp/2 <= 100){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 182) ;
+            }else if(bfp/2 >=101 && bfp/2 <= 200){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 166) ;
+            }else if(bfp/2 >=201 && bfp/2 <= 300){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 156) ;
+            }else if(bfp/2 >=301 && bfp/2 <= 500){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 140) ;
+            }else if(bfp/2 >=501 && bfp/2 <= 1000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 130) ;
+            }else if(bfp/2 >=1001 && bfp/2 <= 2000){
+                print_value = document.getElementById('print').value = Math.abs(bfp * 114) ;
+            }else{
+                print_value = document.getElementById('print').value = Math.abs(bfp * 22);   
+            }
+         }
+        }
+        //加工（断裁）条件式
+            let cut_value = document.getElementById('cut').value = Math.abs(bfp * 0) ;
+            if(bfp >1 && bfp <= 1000 ){
+                cut_value = document.getElementById('cut').value = Math.round((bfp * 0)+1000) ;
+            }else if(bfp >1001 && bfp <= 3000){
+                cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*1.7)*1)/1 ;
+            }else if(bfp >3001 && bfp <= 7000){
+                cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*1.3)*1)/1 ;
+            }else if(bfp >7001 && bfp <= 10000){
+                cut_value = document.getElementById('cut').value = Math.round((bfp * 0.21)*1)/1 ;
+            }else if(bfp >10001 && bfp <= 20000){
+                cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*0.85)*1)/1 ;
+            }else if(bfp >20001 && bfp <= 30000){
+                cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*0.80)*1)/1 ;
+            }else if(bfp >30001 && bfp <= 50000){
+                cut_value = document.getElementById('cut').value = Math.round(((bfp * 0.21)*0.75)*1)/1 ;
+            } 
+        //断裁最低料金の条件式 1000円以下は再代入で1000円にする  
+            if(cut_value < 1000){
+            cut_value = document.getElementById('cut').value = Math.abs((bfp * 0)+1000);
+            }
+            let unitprice_value = document.getElementById('unitprice').value = Math.round(((leaf_value + print_value + cut_value + baseprint_value)/bfp)*100) /100 ;
+            let totalamount_value = document.getElementById('totalamount').value = Math.round((unitprice_value * bfp)*1)/1 ;
+
+
+        //カンマ表示のための関数　mapとかよくわからんから全部このメソッド使う
+            let num = totalamount_value;
+          let formattedNum0 = num.toLocaleString();
+            document.getElementById("totalamount").value = formattedNum0;
+            let num1 = unitprice_value;
+          let formattedNum1 = num1.toLocaleString();
+            document.getElementById("unitprice").value = formattedNum1;
+            let num2 = cut_value;
+          let formattedNum2 = num2.toLocaleString();
+            document.getElementById("cut").value = formattedNum2;
+            let num3 = print_value;
+          let formattedNum3 = num3.toLocaleString();
+            document.getElementById("print").value = formattedNum3;
+            let num4 = baseprint_value;
+          let formattedNum4 = num4.toLocaleString();
+            document.getElementById("baseprint").value = formattedNum4;
+            let num5 = leaf_value;
+          let formattedNum5 = num5.toLocaleString();
+            document.getElementById("leaf").value = formattedNum5; 
+    
+} //2つ目のfunctionここまで!!
+
+//ボタン二つ　input typeが違うから関数使い分ける
+function resetForm() {
+        document.quoform.reset();
+}
+function clearText() {
+        var textForm1 = document.getElementById("mai");
+        var textForm2 = document.getElementById("kikumai");
+    
+        textForm1.value = "";
+        textForm2.value = "";  
+}
+function resetSearch() {
+        const searchElement = document.getElementById('ticketNumid');
+        searchElement.value = searchElement.defaultValue;
+}
+
+// Q&Aの動作
+const animTiming = {
+  duration: 400,
+  easing: "ease-out"
+};
+// アニメーションキーフレームの生成
+const animKeyframes = (content, isOpening) => [
+  {
+    opacity: isOpening ? 0 : 1,
+    height: isOpening ? 0 : content.scrollHeight + "px"
+  },
+  {
+    opacity: isOpening ? 1 : 0,
+    height: isOpening ? content.scrollHeight + "px" : 0
+  }
+];
+
+ const detailsElements = document.querySelectorAll(".faq__details");
+
+ detailsElements.forEach((details) => {
+  const summary = details.querySelector(".faq__summary");
+  const content = details.querySelector(".faq__content");
+  const arrowIcon = summary.querySelector(".arrow-icon");
+
+// summary要素のクリックイベントリスナー
+  summary.addEventListener("click", (event) => {
+    event.preventDefault(); // デフォルトの開閉動作を防止
+    const isOpening = !details.open; // 現在開いているかどうかをチェック
+
+    if (isOpening) {
+      details.open = true; // アコーディオンを開く
+      requestAnimationFrame(() => {
+ // アニメーションの実行
+        content.animate(animKeyframes(content, isOpening), animTiming);
+      });
+    } else {
+      const animation = content.animate(
+        animKeyframes(content, isOpening),
+        animTiming
+      );
+ // アニメーション完了時の処理
+      animation.onfinish = () => {
+        details.open = false; // アコーディオンを閉じる
+      };
+    }
+// 矢印アイコンのクラス切り替え
+    arrowIcon.classList.toggle("active");
+  });
+});
+
+//ナビゲーションのアコーディオン
+const accordionItems = document.querySelectorAll('.accordion-item');
+
+accordionItems.forEach(item => {
+  const header = item.querySelector('.accordion-header');
+  const content = item.querySelector('.accordion-content');
+
+  header.addEventListener('click', () => {
+    content.classList.toggle('active');
+
+  });
+});
+//スクロールしたときのnavの位置固定（ヘッダー飛び越えて固定させる）
+window.addEventListener('scroll', function() {
+    var scrollPosition = window.scrollY;
+    var accordionElement = document.querySelector('.open-fixed');
+
+    if (scrollPosition > 180) {
+        accordionElement.classList.add('fixed');
+    } else {
+        accordionElement.classList.remove('fixed');
+    }
+});
+
+
+//ハンバーガーボタンとペケボタンの切り替え
+let icon = document.querySelector(".icon");
+let newImageSrc = "./061502.png"; // ×の画像のパス
+let originalImageSrc = icon.src; // 三の画像のパスを保存
+
+let isAlternateImage = false; // フラグを初期化して
+
+icon.addEventListener("click", changeIconImage);
+
+function changeIconImage() {
+    if (isAlternateImage) {
+        icon.src = originalImageSrc;
+    } else {
+        icon.src = newImageSrc; 
+    }
+    isAlternateImage = !isAlternateImage; // フラグをトグル
+}
+//製作中表示をモーダル表示する式
+var openBtn = document.getElementById('openBtn');   
+var openBtn0 = document.getElementById('openBtn0');  
+var openBtn1 = document.getElementById('openBtn1');  
+var closeBtn = document.getElementById('closeBtn');
+var modal = document.getElementById('modal');
+
+// リンクをクリックでモーダルを表示
+ openBtn.addEventListener('click', function() {
+    modal.style.display = 'block';
+});
+openBtn0.addEventListener('click', function() {
+    modal.style.display = 'block';
+});
+openBtn1.addEventListener('click', function() {
+    modal.style.display = 'block';
+});
+
+// 閉じるボタンクリックでモーダル消して元に戻る
+ closeBtn.addEventListener('click', function() {
+ modal.style.display = 'none';
+});
+
+// バッド野郎ボタン
+$('.badBtn').click(function() {
+    $(".destruction0").addClass("animate__animated animate__bounceOutUp");
+    setTimeout(function () {
+    $(".destruction1").addClass("animate__animated animate__hinge");
+    setTimeout(function () {
+    $(".destruction2").addClass("animate__animated animate__hinge");
+    setTimeout(function () {
+    $(".destruction3").addClass("animate__animated animate__bounceOutUp");
+    setTimeout(function () {
+    $(".destruction4").addClass("animate__animated animate__hinge");
+    setTimeout(function () {
+    $(".destruction5").addClass("animate__animated animate__hinge");
+    setTimeout(function () {
+    $(".destruction6").addClass("animate__animated animate__bounceOutUp");
+    setTimeout(function () {
+    $(".destruction7").addClass("animate__animated animate__hinge");
+    setTimeout(function () {
+    $(".destruction8").addClass("animate__animated animate__hinge");
+    setTimeout(function () {
+    $(".destruction9").addClass("animate__animated animate__hinge");
+    }, 1000);
+    }, 900);
+    }, 1000);
+    }, 1200);
+    }, 1000);
+    }, 800);
+    }, 1000);
+    }, 1000);
+    }, 1000);
+});
+
+
+// 急造した雑なツクリで恐縮ですが一応テンプレなしのゼロベース制作のフルカスタム仕様です☆チェックありがとうございます。
+</script>
+
+</body>
+</html>
