@@ -5,14 +5,11 @@
     margin:0;
 }
 html, body {
-     max-width: 100vw;  
+     min-height:100%;
+     width: 100%;  
 }
-main {
-    height: auto;
-}
-
-.haikei {
-  height: auto;
+.zentai {
+    min-height: 100%;
 }
 
 /* <weight>: Use a value from 200 to 900 */
@@ -23,20 +20,17 @@ main {
     font-style: normal;
 }
 
-.zentai1 {
+.zentai1{
     grid-row: 1/41;
     grid-column: 8/9;
     display:flex;
     justify-content: center;  
     background-color: #e3dfdc;
-    height:auto;
+    min-height: 100%;
 }
 
 
-.main-backg {
-    background-color: #e3dfdc;
-    height:auto;
-}
+
   
 .parrelease {
      background-color: #e3dfdc;
@@ -119,24 +113,6 @@ form {
     
 }
 
-.a4_form{ 
-    background-image: url(./paperforbg.jpg);
-    padding-left: 10px;
-    padding-bottom: 50px;
-    margin-top: 0px;
-    box-shadow: 2px 2px 4px #777; 
-    max-width:600px;
-    min-width:450px;
-    display:flex;
-    justify-content: center; 
-    
-} 
-/*各インプットのタイトル　デボス加工風*/
-.a4_form dt {
-  color: rgb(134 134 134 / 0.8);
-  text-shadow: 2px 2px 1px #ffffff, 0 0 #000000; 
-}
-
 .toptitle{
     width: 100%;
     margin: 0;
@@ -149,91 +125,6 @@ form {
     color: #333;
     
 }
-/*計算ボタン装飾 ボーダーとマウスオンでのスタイル*/
-.calc-btn {
-    width: 80px;
-    height: 30px;
-    border-left: 2px solid #4b4b4b;
-    border-top:  2px solid #4b4b4b;
-    margin-left: 10px;
-    margin-top:10px;
-    margin-bottom: 10px;
-    background-color: #434343;
-    opacity:0.9;
-    color:#fff;
-    font-family: "Kaisei Opti", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-.calc-btn:hover{
-    cursor: pointer;   
-}
-.calc-btn:active{
-    background-color: #8e8e8e;
-}
-
-.box {
-    box-sizing: border-box;
-    width: 280px;
-    height: 25px;
-    margin-right: auto; 
-    padding: 0 0px; 
-    z-index: 4;   
-}
-.box:focus{
-    border: 1px solid #ccc;
-}
-.box1{
-    background-color: #EEE;
-}
-.box2 {
-    box-sizing: border-box;
-    width: 218px;
-    height: 25px;
-    margin-right: auto; 
-    padding: 0 0px;
-    display:flex;
-    justify-content: left;    
-}
-
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button{
-    -webkit-appearance: none;
-    margin: 0;
-}
-.yoko {
-    display: inline-block;
-}
-.clrbtn {
-    width:58px;
-    background-color: #4b4b4b;
-    opacity:0.9;
-    color:#fff;
-    margin-right: 64px;
-        
-}
-.clrbtn:active{
-    background-color: #8e8e8e;
-}
-.clbtnWidth {
-     padding-left: 64px;
-}
-select option:nth-child(1) {
-    color: #EEE;
-}
-.dtpadd{
-    padding-right:200px;
-}
-form dt {
-   display:flex;
-   justify-content: left;
-   padding-left: 64px; 
-   font-family: "Noto Serif JP", serif;
-   font-optical-sizing: auto;
-   font-weight: 400;
-   font-style: normal; 
-}
-
 
 
 summary {
@@ -252,6 +143,7 @@ summary::-webkit-details-marker {
 }
 .inner {
     width: 350px;
+    height: auto;
     padding: 0 ;
     margin: 0 ;
     height: auto;
@@ -283,6 +175,7 @@ summary::-webkit-details-marker {
 
 .faq__text {
     max-width:350px;
+    height:auto;
     font-size: 12px;
     text-align: left;
 }
@@ -511,49 +404,6 @@ p.copyright {
 
 
 @media screen and (max-width: 768px){
-    .box {
-        box-sizing: border-box;
-        width: 180px;
-        height: 25px;
-        margin-right: auto; 
-        padding: 0 0px; 
- 
-    }
-    
-    .box:focus{
-        border: 1px solid #ccc;
-    }
-
-  
-    .box2 {
-        box-sizing: border-box;
-        width: 180px;
-        height: 25px;
-        margin-right: auto; 
-        padding: 0 0px;
-    }
-    .yoko {
-         display: flex;
-         justify-content: center;
-
-    }
-    .clrbtn {
-        width:58px;
-        color:#fff;
-        margin-right: 0px;    
-    }
-      
-    .clbtnWidth {
-        padding-left: 0px;
-    }
-    .dtpadd{
-        padding-right:0px;
-    }
-    form dt {
-       display:flex;
-       justify-content: left;
-       padding-left: 0px;   
-    }
    .footer1 {
        position: relative;
        padding: 30px 0px;
